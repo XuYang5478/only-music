@@ -3,6 +3,7 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { GetFolderContent } from './get-metadata'
+import { PauseMusic, StartMusic } from "./player";
 
 function createWindow(): void {
   // Create the browser window.
@@ -54,6 +55,11 @@ app.whenReady().then(() => {
   // IPC test
   ipcMain.on('ping', () => console.log('pong'))
   ipcMain.handle('getFolderContent', GetFolderContent)
+  ipcMain.on('playing-music', (event, data) => {
+    console.log(`event: ${event}`)
+    StartMusic(data)
+  })
+  ipcMain.on('pause-music', PauseMusic)
 
   createWindow()
 

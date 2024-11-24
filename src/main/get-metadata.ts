@@ -1,7 +1,7 @@
 import { dialog } from 'electron'
 import * as path from 'node:path'
 import { loadMusicMetadata } from 'music-metadata'
-import { IAudioList } from '../model/audio'
+import { IAudioList } from './db/model/audio'
 import fs from 'fs'
 import FileType from 'file-type'
 
